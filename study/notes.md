@@ -1128,4 +1128,57 @@ Annotations
     • a Spring configuration class
     • triggers component scanning and Spring Boot auto-configuration
 
-p50
+Containerizing
+
+Open Container Initiative (OCI)
+
+- OCI Runtime Specification - defines how to run container images
+- OCI Image Specification - defines how to build container images
+- OCI Distribution Specification - defines how to distribute them
+- Docker is OCI compliant
+- Docker is a founding member of OCI
+
+Docker
+
+Docker server
+ 
+- contains Docker daemon, background process that creates and manages docker images and other objects
+- the server can be called the docker daemon, they are interchangeable
+- exposes an API that you can run containers through
+
+Docker host
+
+- the machine where Docker server runs
+
+Docker client
+
+- talks to daemon through the API
+- command-line based
+
+Container registry
+
+- host and distribute Docker containers, a registry
+- distingish between public and private registries
+- Docker Hub is default public registry provided by Docker company
+
+Container image
+
+- lightweight executable package
+- can be created from scratch by defining text-based Dockerfile
+- versioned using colon, ex. ubuntu:20.04
+
+Container
+
+- a runnable instance of a container image
+- start, stop, update, delete
+- can expose services to the outside world through port forwarding or port mapping
+
+Build Docker image using Gradle
+
+- build docker image around running JAR build of Java project
+
+$ ./gradlew bootBuildImage
+
+How to run image
+
+$ docker run --rm --name catalog-service -p 8080:8080 catalog-service:0.0.1-SNAPSHOT
