@@ -1182,3 +1182,118 @@ $ ./gradlew bootBuildImage
 How to run image
 
 $ docker run --rm --name catalog-service -p 8080:8080 catalog-service:0.0.1-SNAPSHOT
+
+Kubernetes
+
+- standard for container orchestration
+- shortened as K8s
+- automate deployment, scaling, management of containerized applications
+- deployment target is a machine (ex, dev computer, VM)
+
+Minikube
+
+- run a local Kubernetes cluster on any operating system
+- maintained by Kubernetes community
+- by default does not have access to local Docker registry
+
+Cluster
+
+- a set of worker machines (nodes) that run containerized applications
+- every cluster has at least one worker node
+- minikube can create clusters and single-node clusters
+- in production cloud provider will create clusters
+
+Worker nodes
+
+- Kubernetes cluster comprises machines called worker nodes
+- containerized applications are deployed to worker nodes
+- provide cpu, memory, network, and storage
+- client doesn't interact with worker nodes directly, uses kubectl
+
+Control plane
+
+- container orchestration layer
+- manages worker nodes
+- exposes API and interfaces to define, deploy, and manage the lifecycle of containers
+- implements features of orchestration
+  - cluster management
+  - scheduling
+  - health monitoring
+
+$ kubectl
+
+- Kubernetes CLI client
+- communicates with control plane to perform operations on worker nodes
+
+Pod
+
+- smallest deployable unit
+- contains only one of your application
+- kubernetes manages pods rather than containers directly
+
+Deployment
+
+- informs kubernetes about the desired deployment state of application
+- creates pod and keeps healthy for each deployment instance
+
+Service
+
+- a deployment
+- a set of pods
+- can be exposed to other nodes or clusters or outside by defining a Service
+
+Run
+
+1. create resource manifest
+2. describe state for application
+3. YAML file
+4. use kubectl client to ask the control plane to create the resource described by the manifest
+5. control plane creates resource in worker nodes
+6. control plane rely on container registry to fetch images defined in resource manifest
+
+Manually import docker image into minikube
+
+$ minikube image load catalog-service:0.0.1-SNAPSHOT
+
+Create Deployment resource
+
+$ kubectl create deployment catalog-service --image=catalog-service:0.0.1-SNAPSHOT
+
+Verfiy deployment
+
+$ kubectl get deployment
+
+Verfiy pod creation
+
+$ kubectl get pod
+
+Applications running in Kubernetes are not accessible by default
+
+Expose application to the cluster through a Service resource
+
+$ kubectl expose deployment catalog-service --name=catalog-service --port=8080
+
+Verify Service
+
+$ kubectl get service
+
+Port forwarding
+
+- forward traffic from local port 8000 to exposed Service port 8080
+
+$ kubectl port-forward service/catalog-service 8000:8080
+
+To destroy
+
+$ kubectl delete service catalog-service
+$ kubectl delete deployment catalog-service
+$ minikube stop
+
+2.5 Polar Bookshop - A cloud native application
+p60
+
+
+
+
+
+
