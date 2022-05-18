@@ -2,22 +2,22 @@ Cloud Native Sprint in Action
 
 Sections
 
-    • 1 Introduction to cloud native
-    • 2 Cloud native patterns and technologies
-    • 3 Getting started with cloud native development
-    • 4 Externalized configuration management
-    • 5 Persisting and managing data in the cloud
-    • 6 Containerizing Spring Boot
-    • 7 Kubernetes fundamentals for Spring Boot
-    • 8 Reactive Spring: Resilience and scalability
-    • 9 API gateway and circuit breakers
-    • 10 Event-driven applications and functions
-    • 11 Security: Authentication and SPA
-    • 12 Security: Authorization and auditing
-    • 13 Observability and monitoring
-    • 14 Configurationand Secretsmanagement
-    • 15 GitOps and Kubernetes in production
-    • 16 Serverless and Spring Native
+1. ~~1 Introduction to cloud native~~
+2. ~~Cloud native patterns and technologies~~
+3. Getting started with cloud native development
+4. Externalized configuration management
+5. Persisting and managing data in the cloud
+6. Containerizing Spring Boot
+7. Kubernetes fundamentals for Spring Boot
+8. Reactive Spring: Resilience and scalability
+9. API gateway and circuit breakers
+10. Event-driven applications and functions
+11. Security: Authentication and SPA
+12. Security: Authorization and auditing
+13. Observability and monitoring
+14. Configurationand Secretsmanagement
+15. GitOps and Kubernetes in production
+16. Serverless and Spring Native
 
 Info
 
@@ -31,7 +31,7 @@ C:\Users\ermarty\source\repos\cloud-native-spring-in-action
 
 Notes
 
-Chapter 1
+## Chapter 1
 
 Cloud native – specifically designed for the cloud and to take advantage of the new environment and of the cloud computing model
 
@@ -631,7 +631,7 @@ Summary
     • cloud is IT infrastructure provided as a commodity of computing, data storage, networking resources
     • cloud providers deliver services at different levels of abstraction (ex. Infrastructure (IaaS) vs function (FaaS))
 
-Chapter 2
+## Chapter 2
 
 Tweleve-Factor App → 15-Factor methodology
 
@@ -1289,8 +1289,29 @@ $ kubectl delete service catalog-service
 $ kubectl delete deployment catalog-service
 $ minikube stop
 
-2.5 Polar Bookshop - A cloud native application
-p60
+## Chapter 3
+
+Embedded servers
+
+- Spring boot using Tomcat
+
+Tomcat
+
+- a component of a web server
+- provides execution context for web app using Java Servlet API
+
+Port binding
+
+- cloud: self-contained and export via binding a port that can be configured
+- traditional: external server required to execute
+
+Concurrency
+
+- handle concurrency through multiple threads via thread pools
+- favor horizontal over vertical scaling
+   - aka deploy more instances and distribute workload as opposed to adding more resources to server
+
+3.2.1 Executable JARs and embedded servers
 
 
 
