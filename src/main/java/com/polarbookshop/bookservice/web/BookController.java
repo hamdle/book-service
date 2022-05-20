@@ -1,11 +1,11 @@
 package com.polarbookshop.bookservice.web;
 
+import javax.validation.Valid;
+
 import com.polarbookshop.bookservice.domain.Book;
 import com.polarbookshop.bookservice.domain.BookService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("books")
