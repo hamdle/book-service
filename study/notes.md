@@ -1392,8 +1392,17 @@ Service - defines a use case for the domain (ex. adding a book to the catalog)
 
 Repository - abstraction to let domain layer access data independently of its source
 
+Testing the API
 
+- use "http" command line tool
 
+POST Request
+
+- $ http POST :9001/books author="Lisa Smithongue" title="My Cat Lights the Way" isbn="1234" price=12.50
+
+GET Resquest
+
+- $ http :9001/books/1234
 
 
 
