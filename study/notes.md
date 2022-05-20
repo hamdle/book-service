@@ -1404,6 +1404,12 @@ GET Resquest
 
 - $ http :9001/books/1234
 
+Spring MVC
 
+- uses HttpMessageConverter bean to convert returned objects from the BookController as object type Book to JSON
+- the decision is driven by a process called content negotiation where client and server agree on a format both can understand
+- client can inform server using Accept header in HTTP request
+- by default Spring Boot is configured to represent objects returned as JSON
 
+Evolving APIs for future requirements
 
