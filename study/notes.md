@@ -1311,7 +1311,86 @@ Concurrency
 - favor horizontal over vertical scaling
    - aka deploy more instances and distribute workload as opposed to adding more resources to server
 
-3.2.1 Executable JARs and embedded servers
+Executable JARs and embedded servers
+
+- the solution is to bring the server capabilities into the application itself
+- this is saved as JAR instead of EAR or WAR
+- fat-JAR or uber-JAR is a JAR with dependencies and server bundled into the single JAR executable
+
+./gradlew bootJar
+
+- compile code and package application
+- saves in "build/libs/"
+
+./gradlew build
+
+- combines bootJar and test
+
+Understanding the thread-per-request model
+
+synchronous
+
+- blocking
+- scheduled
+
+thread-per-request
+
+- model used by Tomcat server
+- dedicates a thread to handle a single response
+- waits for other processes to finish before continuing (synchronous)
+
+Tomcat
+
+- initalizes with a thread pool ready to use to handle incoming request
+- new requests will be queued until a thread is ready when all threads are in use
+- so the number of threads defined by tomcat is the number of requests it can handle at once (concurrently)
+- this is not always the most efficient method of using all server resources
+- asyncrounous alternatives exists like Spring WebFlux and Project Reactor
+
+Configuring the embedded Tomcat
+
+Normal configuration
+
+- edit server.xml or context.xml
+
+Spring boot Tomcat
+
+- you can configure it 2 ways
+1. through properties
+2. or in a WebServerFactoryCustomizer bean
+
+Properties
+
+- src/main/resource
+  - application.properties
+  - application.yml
+
+server.tomcat.connection-timeout
+
+- how long to wait between accepting TCP connection and reciving HTTP request
+- keep low, especially in cloud environment, to prevent DDoS attack. 2s
+
+server.tomcat.keep-alive-timeout
+
+- limit the time spent reading the HTTP request. 15s
+
+Building a RESTful application with Spring MVC
+
+API first pattern
+
+- define the API contract first
+- business logic later
+- requirements should already be defined
+- documenting the API
+
+Business logic
+
+Entity - also called Domain Entity, represents a noun in the domain, book
+
+Service - defines a use case for the domain (ex. adding a book to the catalog)
+
+Repository - abstraction to let domain layer access data independently of its source
+
 
 
 
