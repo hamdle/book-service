@@ -1321,6 +1321,7 @@ Executable JARs and embedded servers
 
 - compile code and package application
 - saves in "build/libs/"
+- run: java -jar build/libs/[name-of-file].jar
 
 ./gradlew build
 
