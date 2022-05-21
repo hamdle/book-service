@@ -1413,3 +1413,39 @@ Spring MVC
 
 Evolving APIs for future requirements
 
+API versioning
+
+- a way to help add breaking changes to api
+- can be specified in url "/v2/books"
+- or in an HTTP header
+
+Hypermedia
+
+3.4 Testing a RESTful application with Spring
+
+- automated testing allows development to move fast
+- help with regression testing
+
+Unit test
+
+- test a single application component in isolation
+- not aware of Spring and don't depend on Spring library
+
+Integration testing
+
+- test overall functioning of different components interacting with each other
+
+3.4.2 Integration tests with @SpringBootTest
+
+- integration of test with Spring Boot requires a context to be defined
+
+Spring boot integration tests
+
+- can run on mock server or running server
+
+3.4.4 Testing the JSON serialization with @JsonTest
+
+- Spring Boot automatically configures the Jackson library to parse Java objects into JSON (serialization) and vice-versa (deserialization)
+- Using the annotation, you can test JSON serialization and deserialization against an @JsonTest application context
+
+3.5 Deployment pipeline: Build and test
